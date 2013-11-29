@@ -1,0 +1,59 @@
+---
+hostname:    bud-dhq-vnode02
+domain:      *****
+public_ip:   *****
+internal_ip: &ip-bud-dhq-vnode02 10.102.1.1
+network:
+  eth0:
+    auto:      true
+    address:   *****
+    netmask:   255.255.224.0
+    broadcast: *****
+    gateway:   *****
+  lxcbr0:
+    auto:      true
+    address:   *ip-bud-dhq-vnode02
+    netmask:   255.255.0.0
+    broadcast: 10.102.255.255
+    gateway:   ""
+lxc:
+  ***-prod-manage01:
+    ensure:     running
+    template:   *****
+    vgname:     mainvg
+    autostart:  true
+    lvsize:     10
+    filesystem: ext4
+    opts:       "--ip 10.102.1.2 --domain ***** --netmask 255.255.0.0 --resolver 10.102.1.1"
+  ***-prod-db01:
+    ensure:     running
+    template:   *****
+    vgname:     mainvg
+    autostart:  true
+    lvsize:     10
+    filesystem: ext4
+    opts:       "--ip 10.102.1.3 --domain ***** --netmask 255.255.0.0 --resolver 10.102.1.1"
+  ***-prod-log01:
+    ensure:     running
+    template:   *****
+    vgname:     mainvg
+    autostart:  true
+    lvsize:     10
+    filesystem: ext4
+    opts:       "--ip 10.102.1.4 --domain ***** --netmask 255.255.0.0 --resolver 10.102.1.1"
+  ***-prod-monitor01:
+    ensure:     running
+    template:   *****
+    vgname:     mainvg
+    autostart:  true
+    lvsize:     10
+    filesystem: ext4
+    opts:       "--ip 10.102.1.5 --domain ***** --netmask 255.255.0.0 --resolver 10.102.1.1"
+bind:
+  listen: *ip-bud-dhq-vnode02
+  records:
+    1.1: bud-dhq-vnode02.*****
+    2.1: ely-prod-manage01.*****
+    3.1: ely-prod-db01.*****
+    4.1: ely-prod-log01.*****
+    5.1: ely-prod-monitor01.******

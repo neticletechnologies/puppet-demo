@@ -1,0 +1,7 @@
+---
+hostname:    ***-prod-log01
+internal_ip: &ip-***-prod-log01 10.102.1.4
+public_ip:   *ip-***-prod-log01
+network:
+  eth0:
+    address:   *ip-***-prod-log01

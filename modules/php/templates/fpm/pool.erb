@@ -1,0 +1,111 @@
+[<%=@name %>]
+<% if @prefix -%>
+prefix = <%=@prefix %>
+<% end -%>
+<% if @user or @group -%>
+<% if @user -%>
+user = <%=@user %>
+<% end -%>
+<% if @group -%>
+group = <%=@group %>
+<% end -%>
+<% end -%>
+listen = <%=@listen %>
+<% if @listen_backlog -%>
+listen.backlog = <%=@listen_backlog %>
+<% end -%>
+<% if @listen_owner -%>
+listen.owner = <%=@listen_owner %>
+<% end -%>
+<% if @listen_group -%>
+listen.group = <%=@listen_group %>
+<% end -%>
+<% if @listen_mode -%>
+listen.mode = <%=@listen_mode %>
+<% end -%>
+<% if @listen_allowed_clients -%>
+listen.allowed_clients = <%=@listen_allowed_clients %>
+<% end -%>
+pm = <%=@pm %>
+pm.max_children = <%=@pm_max_children %>
+pm.start_servers = <%=@pm_start_servers %>
+pm.min_spare_servers = <%=@pm_min_spare_servers %>
+pm.max_spare_servers = <%=@pm_max_spare_servers %>
+<% if @pm_process_idle_timeout -%>
+pm.process_idle_timeout = <%=@pm_process_idle_timeout %>;
+<% end -%>
+<% if @pm_max_requests -%>
+pm.max_requests = <%=@pm_max_requests %>
+<% end -%>
+<% if @pm_status_path -%>
+pm.status_path = <%=@pm_status_path %>
+<% end -%>
+<% if @ping_path -%>
+ping.path = <%=@ping.path %>
+<% end -%>
+<% if @ping_response -%>
+ping.response = <%=@ping.response %>
+<% end -%>
+<% if @access_log -%>
+access.log = <%=@access_log %>
+<% end -%>
+<% if @access_format -%>
+access.format = <%=@access_format %>
+<% end -%>
+<% if @slowlog -%>
+slowlog = <%=@slowlog %>
+<% end -%>
+<% if @request_slowlog_timeout -%>
+request_slowlog_timeout = <%=@request_slowlog_timeout %>
+<% end -%>
+<% if @request_terminate_timeout -%>
+request_terminate_timeout = <%=@request_terminate_timeout %>
+<% end -%>
+<% if @rlimit_files -%>
+rlimit_files = <%=@rlimit_files %>
+<% end -%>
+<% if @rlimit_core -%>
+rlimit_core = <%=@rlimit_core %>
+<% end -%>
+<% if @chroot -%>
+chroot = <%=@chroot %>
+<% end -%>
+<% if @chdir -%>
+chdir = <%=@chdir %>
+<% end -%>
+<% if @security_limit_extensions -%>
+security.limit_extensions = <%=security_limit_extensions %>
+<% end -%>
+<% if @env -%>
+<% @env.each do |envname, value| -%>
+env[<%=envname %>] = <%=value %>
+<% end -%>
+<% end -%>
+<% if @php_value -%>
+<% @php_value.each do |name, value| -%>
+php_value[<%=name %>] = <%=value %>
+<% end -%>
+<% end -%>
+<% if @php_flag -%>
+<% @php_flag.each do |name, value| -%>
+<% if value -%>
+php_flag[<%=name %>] = On
+<% else -%>
+php_flag[<%=name %>] = Off
+<% end -%>
+<% end -%>
+<% end -%>
+<% if @php_admin_value -%>
+<% @php_admin_value.each do |name, value| -%>
+php_admin_value[<%=name %>] = <%=value %>
+<% end -%>
+<% end -%>
+<% if @php_admin_flag -%>
+<% @php_admin_flag.each do |name, value| -%>
+<% if value -%>
+php_admin_flag[<%=name %>] = On
+<% else -%>
+php_admin_flag[<%=name %>] = Off
+<% end -%>
+<% end -%>
+<% end -%>

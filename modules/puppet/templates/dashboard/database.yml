@@ -1,0 +1,9 @@
+# config/database.yml
+# 
+production:
+  host: <%= @mysqlhost %>
+  database: <%= @mysqldb %>
+  username: <%= @mysqluser %>
+  password: <%= @mysqlpassword %>
+  encoding: utf8
+  adapter: mysql

@@ -1,0 +1,55 @@
+<VirtualHost <%= @vhostspec %>>
+	ServerName <%= @myName %>
+<% if @server_admin != '' -%>
+	ServerAdmin <%= @server_admin %>
+<% end -%>
+<% if @server_alias -%>
+<% @server_alias.each do |aliasname| -%>
+	ServerAlias <%= "#{aliasname}" %>
+<% end -%>
+<% end -%>
+<% if @document_root != '' -%>
+	DocumentRoot <%= @document_root %>
+<% end -%>
+<% if @error_log != '' -%>
+	ErrorLog <%= @error_log %>
+<% end -%>
+<% if @log_level != '' -%>
+	LogLevel <%= @log_level %>
+<% end -%>
+<% if @alias -%>
+<% @alias.each do |aliasname, target| -%>
+	Alias <%= "#{aliasname}" %> <%= "#{target}" %>
+<% end -%>
+
+<% end -%>
+<% if @script_alias -%>
+<% @script_alias.each do |aliasname, target| -%>
+	ScriptAlias <%= "#{aliasname}" %> <%= "#{target}" %>
+<% end -%>
+
+<% end -%>
+<% if @location -%>
+<% @location.each do |locationSpec, locationData| -%>
+	<Location <%= locationSpec %>>
+<% locationData.each do |paramName, paramValue| -%>
+		<%= paramName %> <%= paramValue %>
+<% end -%>
+	</Location>
+<% end -%>
+<% end -%>
+<% if @directory -%>
+<% @directory.each do |directorySpec, directoryData| -%>
+	<Directory <%= directorySpec %>>
+<% directoryData.each do |paramName, paramValue| -%>
+		<%= paramName %> <%= paramValue %>
+<% end -%>
+	</Directory>
+<% end -%>
+<% end -%>
+<% if @extra -%>
+<% @extra.each do |paramName, paramValue| -%>
+	<%= paramName %> <%= paramValue %>
+<% end -%>
+<% end -%>
+</VirtualHost>

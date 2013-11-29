@@ -1,0 +1,8 @@
+#!/bin/bash
+
+ADDR=$1
+CHECKNAME=$2
+
+NEWADDR=$(host $(host $ADDR | sed -e 's/.*domain name pointer //' -e 's/\.$//') |grep 'has address' | sed -e 's/.*has address //')
+/usr/lib/nagios/plugins/check_nrpe -u -t 120 -H $NEWADDR -c $CHECKNAME
+exit $?

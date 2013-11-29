@@ -1,0 +1,11 @@
+127.0.0.1                               localhost  ip4-localhost  ip4-loopback
+::1                                     localhost  ip6-localhost  ip6-loopback
+<%= @ipaddr.ljust(39) %> <%= @fqdn %>  <%= @hostname %>
+<% if (@ipaddr6) -%>
+<%= @ipaddr6.ljust(39) %> <%= @fqdn %>  <%= @hostname %>
+<% end -%>
+
+fe00::0                                 ip6-localnet
+ff00::0                                 ip6-mcastprefix
+ff02::1                                 ip6-allnodes
+ff02::2                                 ip6-allrouters

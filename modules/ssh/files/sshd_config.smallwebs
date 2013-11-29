@@ -1,0 +1,59 @@
+ListenAddress [::]:22
+ListenAddress 0.0.0.0:22
+ListenAddress [::]:2221
+ListenAddress 0.0.0.0:2221
+Protocol 2
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_dsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+UsePrivilegeSeparation yes
+
+KeyRegenerationInterval 3600
+ServerKeyBits 768
+
+SyslogFacility AUTH
+LogLevel INFO
+
+LoginGraceTime 120
+PermitRootLogin no
+StrictModes yes
+
+RSAAuthentication yes
+PubkeyAuthentication yes
+#AuthorizedKeysFile	%h/.ssh/authorized_keys
+
+IgnoreRhosts yes
+RhostsRSAAuthentication no
+HostbasedAuthentication no
+IgnoreUserKnownHosts yes
+
+PermitEmptyPasswords no
+
+ChallengeResponseAuthentication yes
+
+#PasswordAuthentication yes
+
+X11Forwarding no
+PrintMotd no
+PrintLastLog yes
+TCPKeepAlive yes
+#UseLogin no
+
+#MaxStartups 10:30:60
+#Banner /etc/issue.net
+
+# Allow client to pass locale environment variables
+AcceptEnv LANG LC_*
+
+Subsystem sftp /usr/lib/openssh/sftp-server
+
+UsePAM yes
+
+Match Group ftpuser
+	AllowTcpForwarding yes
+	X11Forwarding no
+	PermitTunnel no
+	GatewayPorts no
+	AllowAgentForwarding no
+	PermitOpen localhost:3306
+	ForceCommand echo 'This account can only be used for MySQL forwarding.'

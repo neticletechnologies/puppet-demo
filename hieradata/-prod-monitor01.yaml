@@ -1,0 +1,26 @@
+---
+hostname:    ***-prod-monitor01
+internal_ip: &ip-***-prod-monitor01 10.102.1.5
+public_ip:   *ip-***-prod-monitor01
+network:
+  eth0:
+    address:   *ip-***-prod-monitor01
+twilio:
+  from:      "*****"
+  userid:    "*****"
+  authtoken: "*****"
+nagios:
+  janoszen:
+    contact_name:                    "janoszen"
+    host_notifications_enabled:      "1"
+    service_notifications_enabled:   "1"
+    service_notification_options:    "w,u,c,r"
+    host_notification_options:       "d,u,r"
+    service_notification_commands:   "notify-service-by-sms"
+    host_notification_commands:      "notify-host-by-sms"
+    service_notification_period:     "24x7"
+    host_notification_period:        "24x7"
+    email:                           "janos@pasztor.at"
+    pager:                           "*****"
+    contactgroups:                   "all"
+    target:                          "/etc/icinga/objects/contact-janoszen.cfg"

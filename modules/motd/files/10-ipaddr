@@ -1,0 +1,33 @@
+#!/bin/bash
+
+HOSTNAME=$(hostname -f)
+INET4ADDR=$(ip addr |grep "inet " | awk ' { print $2 }')
+INET6ADDR=$(ip addr |grep "inet6 " | awk ' { print $2 }')
+
+echo ""
+echo -n "Hostname:       "
+echo $HOSTNAME
+echo ""
+
+echo -n "IPv4 Addresses: "
+FIRST=1
+for addr in $INET4ADDR; do
+	if [ "$FIRST" -eq 1 ]; then
+		FIRST=0
+	else
+		echo -n "                "
+	fi
+	echo $addr
+done
+echo ""
+
+echo -n "IPv6 Addresses: "
+FIRST=1
+for addr in $INET6ADDR; do
+	if [ "$FIRST" -eq 1 ]; then
+		FIRST=0
+	else
+		echo -n "                "
+	fi
+	echo $addr
+done

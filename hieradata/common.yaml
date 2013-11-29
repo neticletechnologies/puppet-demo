@@ -1,0 +1,26 @@
+---
+uptrack: *****
+nameservers:
+  - 10.102.1.1
+users:
+  janoszen:
+    firstname: Janos
+    lastname:  Pasztor
+    uid:       5000
+    gid:       5000
+    ingroups:
+      - sudo
+    password:  *
+    sshkeys:
+      - ssh-rsa ***** janos@home
+      - ssh-rsa ***** janoszen@ixolit
+      - ssh-rsa ***** janoszen@portable
+    email:     business@janoszen.com
+sysctl:
+  net.ipv4.tcp_syncookies:               1
+  net.ipv4.conf.all.accept_redirects:    0
+  net.ipv6.conf.all.accept_redirects:    0
+  net.ipv4.conf.all.send_redirects:      0
+  net.ipv4.conf.all.accept_source_route: 0
+  net.ipv6.conf.all.accept_source_route: 0
+  net.ipv4.icmp_echo_ignore_broadcasts:  1

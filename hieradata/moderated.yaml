@@ -1,0 +1,8 @@
+---
+domain:      *****
+network:
+  eth0:
+    auto:      true
+    netmask:   255.255.0.0
+    broadcast: 10.102.255.255
+    gateway:   10.102.1.1

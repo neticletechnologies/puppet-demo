@@ -1,0 +1,15 @@
+$ORIGIN 102.10.in-addr.arpa.
+$TTL 600	; 10 minutes
+@	IN SOA	<%=@fqdn%>. ops.opsgears.com. (
+		2012090234 ; serial
+		28800      ; refresh (8 hours)
+		7200       ; retry (2 hours)
+		1209600    ; expire (2 weeks)
+		3600       ; minimum (1 hour)
+		)
+@	IN NS	<%=@fqdn%>.
+<% @records.keys.sort.each do |name| -%>
+<% if @records[name] != '' -%>
+<%=name %> IN PTR <%=@records[name] %>
+<% end -%>
+<% end -%>

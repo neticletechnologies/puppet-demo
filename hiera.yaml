@@ -1,0 +1,11 @@
+---
+:backends:
+  - yaml
+:yaml:
+  :datadir: /etc/puppet/hieradata
+:hierarchy:
+  - "%{::fqdn}"
+  - "%{::hostname}"
+  - "%{::domain}"
+  - common
+:merge_behavior: deeper

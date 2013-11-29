@@ -1,0 +1,12 @@
+<% @name_virtual_host.each do |address| -%>
+	NameVirtualHost <%= address %>
+<% end -%>
+<% @listen.each do |address| -%>
+	Listen <%=address %>
+<% end -%>
+
+<IfModule mod_ssl.c>
+	<% @listenSSL.each do |address| -%>
+	Listen <%=address%>
+	<% end -%>
+</IfModule>

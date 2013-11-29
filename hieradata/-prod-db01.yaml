@@ -1,0 +1,12 @@
+---
+hostname:    ***-prod-db01
+internal_ip: &ip-***-prod-db01 10.102.1.3
+public_ip:   *ip-***-prod-db01
+network:
+  eth0:
+    address:   *ip-***-prod-db01
+mysql:
+  server:
+    root_password: chiejasohL3f
+    override_options:
+      bind_address: 0.0.0.0

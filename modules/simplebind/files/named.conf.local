@@ -1,0 +1,9 @@
+//
+// Do any local configuration here
+//
+
+zone "102.10.in-addr.arpa" {
+    type master;
+    file "/etc/bind/db.102.10.in-addr.arpa";
+    notify yes;
+};
